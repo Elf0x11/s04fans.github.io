@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>沙尔克04中国球迷会</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-07-26T12:07:25.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>沙尔克04中国球迷会</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Chinese Schalker 1904</title>
+    <link href="http://yoursite.com/2017/07/26/Chinese-Schalker-1904/"/>
+    <id>http://yoursite.com/2017/07/26/Chinese-Schalker-1904/</id>
+    <published>2017-07-26T11:38:35.000Z</published>
+    <updated>2017-07-26T12:07:25.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;沙尔克04 中国球迷会&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
