@@ -88,24 +88,23 @@
   </div>
 </div>
 <main class="app-body">
-  <article class="post-article">
+   <article class="post-article">
     <section class="markdown-content"><p>沙尔克04 中国球迷会</p>
 </section>
+    
     
   </article>
 </main>
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/2017/07/26/Chinese-Schalker-1904/';
+   var url = 'http://yoursite.com/2017/07/26/Chinese-Schalker-1904/';
     $('#article-banner').geopattern(url)
     $('.header').removeClass('fixed-header')
-
      // error image
     $(".markdown-content img").on('error', function() {
       $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
     })
-
     // zoom image
     $(".markdown-content img").on('click', function() {
       var src = $(this).attr('src')
@@ -116,7 +115,6 @@
       zoom = zoom < 1 ? 1 : zoom
       zoom = zoom > 2 ? 2 : zoom
       var transY = (($(window).height() - imageH) / 2).toFixed(2)
-
       $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
       $('.image-view-wrap').addClass('wrap-active')
       $('.image-view-wrap img').css({
@@ -124,13 +122,44 @@
         'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
       })
       $('html').css('overflow', 'hidden')
-
       $('.image-view-wrap').on('click', function() {
         $(this).remove()
         $('html').attr('style', '')
       })
     })
-    
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+    // gitment
+    var gitmentConfig = "yanm1ng";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "Chinese Schalker 1904",
+        owner: "yanm1ng",
+        repo: "yanm1ng.github.io",
+        oauth: {
+          client_id: "0f87e490e00ee3fd87ef",
+          client_secret: "4a9d2b148e7971c2201ad12131ce8bf8159ccd2e"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+  
 </script>
 
     <div class="scroll-top">
