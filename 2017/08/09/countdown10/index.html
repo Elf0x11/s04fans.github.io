@@ -7,7 +7,7 @@
   <meta name="keyword" content="hexo-theme, vuejs">
   <title>
     
-      沙尔克04中国球迷会
+      德甲首轮倒计时10天 | 沙尔克04中国球迷会
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -81,57 +81,91 @@
 </header>
 
     <div id="article-banner">
-  <h2>文章</h2>
-  <p class="post-date">文章归档</p>
-</div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2017
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2017/08/09/countdown10/" class="archive-title">德甲首轮倒计时10天</a>
-        <p class="archive-date">08-09</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/08/09/100/" class="archive-title">祝贺中国沙尔克人会员破百</a>
-        <p class="archive-date">08-09</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/07/28/membership/" class="archive-title">沙尔克04官方会员征集令</a>
-        <p class="archive-date">07-28</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/07/28/Logo/" class="archive-title">“中国沙尔克人”球迷会Logo设计理念</a>
-        <p class="archive-date">07-28</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/07/26/Chinese-Schalker-1904/" class="archive-title">Chinese Schalker 1904</a>
-        <p class="archive-date">07-26</p>
-      </div>
-    
+  <h2>德甲首轮倒计时10天</h2>
+  <p class="post-date">2017-08-09</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
   </div>
+</div>
+<main class="app-body">
+   <article class="post-article">
+    <section class="markdown-content"><p><img src="http://otsd27d1a.bkt.clouddn.com/WechatIMG50.jpeg" alt="倒计时10"></p>
+<p><strong>10</strong>，是一个充满传奇的数字，当10结合皇家蓝，你会想到什么？</p>
+<p>本塔莱布、拉基蒂奇、林肯、托恩、德拉克斯勒……皇家蓝的每位十号都用精彩的表现征服着盖尔森基兴的球迷，而今天是属于他们的倒计时之日。</p>
+<p>今天距离我们的“皇家蓝”在德甲联赛登场还有十天！一起来聊聊你最喜欢哪位皇家蓝的10号球员吧~</p>
+<p>新赛季，矿矿期待着大家的支持，也欢迎矿粉们多多和我们互动，参加球迷会的各项活动哦！</p>
 </section>
-  
+    
+    
+  </article>
 </main>
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/archives/2017/08/index.html';
-    $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
+   var url = 'http://yoursite.com/2017/08/09/countdown10/';
+    $('#article-banner').geopattern(url)
+    $('.header').removeClass('fixed-header')
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
+    })
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      var imageW = $(this).width()
+      var imageH = $(this).height()
+      
+      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+      zoom = zoom < 1 ? 1 : zoom
+      zoom = zoom > 2 ? 2 : zoom
+      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+      $('.image-view-wrap').addClass('wrap-active')
+      $('.image-view-wrap img').css({
+        'width': `${imageW}`,
+        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+      })
+      $('html').css('overflow', 'hidden')
+      $('.image-view-wrap').on('click', function() {
+        $(this).remove()
+        $('html').attr('style', '')
+      })
+    })
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "德甲首轮倒计时10天",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
   })();
+  
 </script>
+
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
