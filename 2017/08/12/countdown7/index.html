@@ -7,7 +7,7 @@
   <meta name="keyword" content="hexo-theme, vuejs">
   <title>
     
-      沙尔克04中国球迷会
+      德甲首轮倒计8天 | 沙尔克04中国球迷会
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -81,77 +81,87 @@
 </header>
 
     <div id="article-banner">
-  <h2>文章</h2>
-  <p class="post-date">文章归档</p>
-</div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2017
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2017/08/12/countdown7/" class="archive-title">德甲首轮倒计8天</a>
-        <p class="archive-date">08-12</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/08/12/countdown8/" class="archive-title">德甲首轮倒计时8天</a>
-        <p class="archive-date">08-12</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/08/11/2017081101/" class="archive-title">加油，沙尔克</a>
-        <p class="archive-date">08-11</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/08/11/countdown9/" class="archive-title">德甲首轮倒计时9天</a>
-        <p class="archive-date">08-11</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/08/10/countdown10/" class="archive-title">德甲首轮倒计时10天</a>
-        <p class="archive-date">08-10</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/08/09/100/" class="archive-title">祝贺中国沙尔克人会员破百</a>
-        <p class="archive-date">08-09</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/07/28/membership/" class="archive-title">沙尔克04官方会员征集令</a>
-        <p class="archive-date">07-28</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/07/28/Logo/" class="archive-title">“中国沙尔克人”球迷会Logo设计理念</a>
-        <p class="archive-date">07-28</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/07/26/Chinese-Schalker-1904/" class="archive-title">Chinese Schalker 1904</a>
-        <p class="archive-date">07-26</p>
-      </div>
-    
+  <h2>德甲首轮倒计8天</h2>
+  <p class="post-date">2017-08-12</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
   </div>
+</div>
+<main class="app-body">
+   <article class="post-article">
+    <section class="markdown-content"><p><img src="http://otsd27d1a.bkt.clouddn.com/20170812235408_23JndI_day7.png" alt=""></p>
 </section>
-  
+    
+    
+  </article>
 </main>
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/archives/2017/07/index.html';
-    $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
+   var url = 'http://yoursite.com/2017/08/12/countdown7/';
+    $('#article-banner').geopattern(url)
+    $('.header').removeClass('fixed-header')
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
+    })
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      var imageW = $(this).width()
+      var imageH = $(this).height()
+      
+      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+      zoom = zoom < 1 ? 1 : zoom
+      zoom = zoom > 2 ? 2 : zoom
+      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+      $('.image-view-wrap').addClass('wrap-active')
+      $('.image-view-wrap img').css({
+        'width': `${imageW}`,
+        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+      })
+      $('html').css('overflow', 'hidden')
+      $('.image-view-wrap').on('click', function() {
+        $(this).remove()
+        $('html').attr('style', '')
+      })
+    })
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "德甲首轮倒计8天",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
   })();
+  
 </script>
+
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
